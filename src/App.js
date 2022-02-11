@@ -17,9 +17,15 @@ import { logout } from './services/fetch-utils';
 
 export default function App() {
   // You'll need to track the user in state
-
+  const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
   // add a useEffect to get the user and inject the user object into state on load
-
+  // useEffect(() => {
+  //   async function fetchUser() {
+  //     const user = getUser;
+  //   }
+  
+  // }, []);
+  
   async function handleLogout() {
     // call the logout function
     // clear the user in state
@@ -29,12 +35,23 @@ export default function App() {
     <Router>
       <div className='App'>
         <header>
-          {/* if there is a user in state, render out a link to the board games list, the create page, and add a button to let the user logout */}
+          {/* if there is a user in state, render out a link to the board games list, 
+          the create page, and add a button to let the user logout */}
+          {
+            user && <>
+              <NavLink to="/board-games">Board Games</NavLink><NavLink to="/create">Create Page</NavLink>
+              <button>logout</button>
+            </>
+          }
         </header>
         <main>
           <Switch>
             <Route exact path="/">
-              {/* if there is a user, redirect to the board games list. Otherwise, render the auth page. Note that the AuthPage will need a function called setUser that can set the user state in App.js */}
+              {/* if there is a user, redirect to the board games list. Otherwise, render the auth page. 
+              Note that the AuthPage will need a function called setUser that can set the user state in App.js */}
+              { user 
+                ? <ListPage /> 
+                : <AuthPage setUser={setUser} />}
             </Route>
             <Route exact path="/board-games">
               {/* if there is a user, render the board games list. Otherwise, redirect to the home route/auth page */}

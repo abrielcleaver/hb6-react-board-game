@@ -9,13 +9,15 @@ export default function AuthPage(props) {
       
     // sign the user in using the form state
 
-    // set the user in App.js state using the correct prop callback. If you did the ternary right in App.js, this should automatically redirect the user to the board game list
+    // set the user in App.js state using the correct prop callback. If you did the ternary right in App.js, 
+    // this should automatically redirect the user to the board game list
   }
     
   async function handleSignUp() {
     // sign the user up using the form state
 
-    // set the user in App.js state using the correct prop callback. If you did the ternary right in App.js, this should automatically redirect the user to the board game list
+    // set the user in App.js state using the correct prop callback. If you did the ternary right in App.js, 
+    // this should automatically redirect the user to the board game list
   }
 
   return (
